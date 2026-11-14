@@ -13,7 +13,7 @@ export const CartSlice = createSlice({
             const existingItem = state.items.find(item => item.name === name);
 
             if (existingItem) {
-               
+                // In existing items, quantity is already added as property
                 existingItem.quantity++;
             } else {
                 state.items.push({ name, image, cost, quantity: 1 });
@@ -27,7 +27,7 @@ export const CartSlice = createSlice({
             state.items = state.items.filter(item => item.name !== name);
             state.numOfItems -= quantity;
 
-            
+            // Just to be sure... I hate negative numbers
             if (state.numOfItems < 0) {
                 state.numOfItems = 0;
             }
